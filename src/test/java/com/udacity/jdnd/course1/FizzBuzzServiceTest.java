@@ -64,6 +64,18 @@ class FizzBuzzServiceTest {
 	}
 
 	@Test
+	void testBuzzFizz_invalidStrings() {
+		FizzBuzzService fbs = new FizzBuzzService();
+
+		// should this be case insensitive?
+		assertThrows(NumberFormatException.class, ()->fbs.buzzFizz("fizz", 1)); //throws number format exception
+		assertThrows(NumberFormatException.class, ()->fbs.buzzFizz("buzz", 1));
+
+		// what to do about nonsense input?
+		assertThrows(IllegalArgumentException.class, () -> fbs.buzzFizz("tacocat", 1));
+	}
+
+	@Test
 	void testBuzzFizz_unclearRepetition() {
 		FizzBuzzService fbs = new FizzBuzzService();
 

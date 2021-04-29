@@ -14,6 +14,9 @@ public class FizzBuzzService {
 
         if(input.equals("-1")) throw new IllegalArgumentException("Can't have \"-1\" as input");
 
+        if(input.equals("fizz") || input.equals("buzz"))
+            throw new NumberFormatException("First letter of \"Fizz\" and \"Buzz\" should be capital!")/*IllegalArgumentException()*/;
+
         if(input.equals("1") && occurrence == 2)
             throw new IllegalArgumentException("There should never be a second occurrence of \"1\"");
 
