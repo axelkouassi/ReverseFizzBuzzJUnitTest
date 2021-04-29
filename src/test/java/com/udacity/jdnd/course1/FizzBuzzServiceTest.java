@@ -61,4 +61,21 @@ class FizzBuzzServiceTest {
 		assertEquals(5, fbs.buzzFizz("5",1));
 
 	}
+
+	@Test
+	void testBuzzFizz_boundaryChecking() {
+		FizzBuzzService fbs = new FizzBuzzService();
+
+		// how should the program represent that no input produces the output. This example would
+		// return the integer -1, which is incorrect. Should we throw an exception, return 0 or some other value?
+		assertThrows(IllegalArgumentException.class, () -> fbs.buzzFizz("-1", 1));
+
+		// what about integers recurrence? There should never be a second occurrence
+		// of "1", so what do we expect the program to do?
+		assertThrows(IllegalArgumentException.class, () -> fbs.buzzFizz("1", 2));
+
+		// we can also enter invalid occurrence param for "Fizz" or "Buzz", getting back 0 or negative numbers
+		assertThrows(IllegalArgumentException.class, () -> fbs.buzzFizz("Fizz", 0)); // returns 0
+		assertThrows(IllegalArgumentException.class, () -> fbs.buzzFizz("Buzz", -1)); // returns -5
+	}
 }

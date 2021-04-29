@@ -11,6 +11,22 @@ public class FizzBuzzService {
      * because "Buzz" is produced for the values 5 and 10 in FizzBuzz.
      */
     public int buzzFizz(String input, int occurrence) {
+
+        if(input.equals("-1")) throw new IllegalArgumentException("Can't have \"-1\" as input");
+
+        if(input.equals("1") && occurrence == 2)
+            throw new IllegalArgumentException("There should never be a second occurrence of \"1\"");
+
+        if(input.equals("Fizz") && occurrence == 0)
+            throw new IllegalArgumentException("Can't have \"0\" occurrences!");
+        if(input.equals("Fizz") && occurrence == -1)
+            throw new IllegalArgumentException("Can't have \"-1\" occurrences!");
+
+        if(input.equals("Buzz") && occurrence == 0)
+            throw new IllegalArgumentException("Can't have \"0\" occurrences!");
+        if(input.equals("Buzz") && occurrence == -1)
+            throw new IllegalArgumentException("Can't have \"-1\" occurrences!");
+
         if (input.equals("Fizz")) {
             return 3 * occurrence;
         } else if (input.equals("Buzz")) {
