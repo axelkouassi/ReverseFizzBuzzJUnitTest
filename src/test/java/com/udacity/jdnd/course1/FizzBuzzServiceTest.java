@@ -37,6 +37,7 @@ class FizzBuzzServiceTest {
 
 	}
 
+
 	@Test
 	void testBuzzFizz(){
 
@@ -61,6 +62,18 @@ class FizzBuzzServiceTest {
 		assertEquals(5, fbs.buzzFizz("5",1));
 
 	}
+
+	@Test
+	void testBuzzFizz_unclearRepetition() {
+		FizzBuzzService fbs = new FizzBuzzService();
+
+		// requirements unclear - does "FizzBuzz" count as a "Fizz" and a "Buzz" as well?
+		// both these tests fail because they return '15', which is "FizzBuzz"
+		assertEquals(15, fbs.buzzFizz("Fizz", 5));
+		assertEquals(15, fbs.buzzFizz("Buzz", 3));
+	}
+
+
 
 	@Test
 	void testBuzzFizz_boundaryChecking() {
